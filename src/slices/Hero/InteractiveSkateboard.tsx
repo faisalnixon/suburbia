@@ -4,7 +4,6 @@ import { Skateboard } from "@/components/Skateboard";
 import {
   ContactShadows,
   Environment,
-  OrbitControls,
   Center,
   Html,
 } from "@react-three/drei";
@@ -142,7 +141,7 @@ function Scene({
     } else if (name === "middle") {
       kickflip(board);
     } else if (name === "front") {
-      frontside360(board, origin);
+      frontside360(board);
     }
 
     function ollie(board: THREE.Group) {
@@ -174,7 +173,7 @@ function Scene({
         .to(board.rotation, { x: 0, duration: 0.12, ease: "none" });
     }
 
-    function frontside360(board: THREE.Group, origin: THREE.Group) {
+    function frontside360(board: THREE.Group) {
       jumpBoard(board);
 
       gsap

@@ -4,7 +4,6 @@ import {
   PrismicText,
   SliceComponentProps,
 } from "@prismicio/react"; 
-import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
 import { Bounded } from "@/components/Bounded";
 import clsx from "clsx";
 import { Heading } from "@/components/Heading";

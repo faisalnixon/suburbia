@@ -10,7 +10,6 @@ type BoundedProps = {
 };
 
 export function Bounded({
-  as: Comp = "section",
   className,
   children,
   ...restProps

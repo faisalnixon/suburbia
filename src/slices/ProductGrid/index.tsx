@@ -8,7 +8,6 @@ import {
 
 import { Bounded } from "@/components/Bounded";
 import { Heading } from "@/components/Heading";
-import { PrismicNextLink } from "@prismicio/next";
 import { SkateboardProduct } from "./SkateboardProduct";
 import { SlideIn } from "@/components/SlideIn";
 
