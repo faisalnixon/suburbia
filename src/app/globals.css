@@ -1,26 +1,124 @@
-@import "tailwindcss";
+ @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+.bg-texture {
+  background-size: 720px 460px;
+  background-repeat: repeat;
+  background-position: center;
+  background-image: url("/bg-texture.webp");
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+
+.button-cutout {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  /* background:  #ff7a00 ; */
+  color: black;
+  padding: 0.75rem 1.5rem;
+  font-weight: bold;
+
+  filter: drop-shadow(0 1px 0 #000) drop-shadow(-1px 0 0 #000)
+    drop-shadow(1px 0 0 #000) drop-shadow(0 -1px 0 #000)
+    drop-shadow(8px 8px 0 #000);
+
+  transition: all 0.2s, background-position 0.2s;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+.button-cutout:hover {
+  /* background:rgb(254, 254, 156); */
+  filter: drop-shadow(0 1px 0 #000) drop-shadow(-1px 0 0 #000)
+    drop-shadow(1px 0 0 #000) drop-shadow(0 -1px 0 #000)
+    drop-shadow(2px 2px 0 #000);
+  background-position: bottom; 
+}
+
+
+.button-cutout::before,
+.button-cutout::after {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1rem;
+  content: "";
+  background: inherit;
+}
+
+.button-cutout::before {
+  right: calc(100% - 1px);
+  clip-path: polygon(
+    23% 19%,
+    0 0,
+    100% 0,
+    100% 100%,
+    0 100%,
+    29% 79%,
+    9% 80%,
+    0 33%
+  );
+}
+
+.button-cutout::after {
+  left: calc(100% - 1px);
+  clip-path: polygon(
+    100% 0,
+    74% 28%,
+    100% 29%,
+    100% 70%,
+    84% 78%,
+    100% 100%,
+    0 100%,
+    0 0
+  );
+}
+
+.stack-layout {
+  display: grid;
+  grid-template-areas: "stack";
+  place-items: center;
+}
+
+.stack-layout > * {
+  grid-area: stack;
+}
+
+.skater-scribble-path {
+  opacity: 0.8;
+  stroke-dasharray: 2300;
+  stroke-dashoffset: -2300;
+  transition: stroke-dashoffset 1s ease-in-out 0.2s;
+  transform-origin: center center;
+}
+
+.skater:hover .skater-scribble-path {
+  stroke-dashoffset: 0;
+}
+
+.slide-in-hidden {
+  opacity: 0;
+  transform: translateX(-100px);
+}
+
+@keyframes slide-in {
+  to {
+    opacity: 1;
+    transform: translateX(0);
   }
+}  
+
+
+
+.animate-squiggle {
+  animation: squiggle 0.5s infinite;
+}
+@keyframes squiggle {
+  0%   { filter: url("#squiggle-0"); }
+  25%  { filter: url("#squiggle-1"); }
+  50%  { filter: url("#squiggle-2"); }
+  75%  { filter: url("#squiggle-3"); }
+  100% { filter: url("#squiggle-4"); }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-}
+
+
+
